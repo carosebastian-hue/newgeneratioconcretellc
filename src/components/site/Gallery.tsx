@@ -221,7 +221,7 @@ export function Gallery() {
                 loading="lazy"
                 className="w-full transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute inset-0 bg-gradient-to-t from-surface-strong via-surface-strong/10 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
+              <span className="absolute inset-0 bg-gradient-to-t from-surface-strong via-surface-strong/40 via-35% to-transparent transition-opacity" />
               <span className="absolute inset-x-0 bottom-0 p-5">
                 <span className="block font-display text-lg font-bold uppercase leading-tight">
                   {p.title[lang]}
