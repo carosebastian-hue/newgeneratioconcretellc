@@ -200,5 +200,5 @@ export const CONTACT = {
   phoneDisplay: "(856) 326-0465",
   phoneHref: "tel:8563260465",
   email: "856newgenerationconcrete@gmail.com",
-  name: "856 New Generation Concrete LLC",
+  name: "856 NEW GENERATION CONCRETE LLC",
 };

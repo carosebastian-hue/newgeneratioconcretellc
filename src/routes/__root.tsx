@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "856 New Generation Concrete LLC" },
+      { title: "856 NEW GENERATION CONCRETE LLC" },
       {
         name: "description",
         content:
           "Residential & commercial concrete contractor in South Jersey. Driveways, patios, stamped concrete, foundations. Free estimates.",
       },
       { name: "author", content: "856 New Generation Concrete LLC" },
-      { property: "og:title", content: "856 New Generation Concrete LLC" },
+      { property: "og:title", content: "856 NEW GENERATION CONCRETE LLC" },
       {
         property: "og:description",
         content:
