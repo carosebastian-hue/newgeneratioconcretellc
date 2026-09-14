@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { CONTACT, useLang, type TKey } from "@/lib/i18n";
+import logo from "@/assets/logo.png.asset.json";
 
 const links: { id: string; key: TKey }[] = [
   { id: "services", key: "nav.services" },
@@ -18,9 +19,11 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/80 bg-surface-strong/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
         <a href="#top" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-primary font-display text-lg font-bold text-primary-foreground">
-            856
-          </span>
+          <img
+            src={logo.url}
+            alt="856 New Generation Concrete LLC"
+            className="h-10 w-10 object-contain"
+          />
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-lg font-bold uppercase tracking-wide">
               New Generation
