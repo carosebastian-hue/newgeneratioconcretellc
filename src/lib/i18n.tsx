@@ -202,3 +202,10 @@ export const CONTACT = {
   email: "856newgenerationconcrete@gmail.com",
   name: "856 NEW GENERATION CONCRETE LLC",
 };
+
+export const SOCIAL = {
+  facebook: "#",
+  instagram: "#",
+  youtube: "#",
+  tiktok: "#",
+};
