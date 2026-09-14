@@ -30,43 +30,42 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-surface-strong/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-4">
-          <a href="#top" className="flex items-center gap-3">
-            <img
-              src={logo.url}
-              alt="856 New Generation Concrete LLC"
-              className="h-10 w-10 object-contain"
-            />
-            <span className="hidden leading-tight sm:block">
-              <span className="block font-display text-lg font-bold uppercase tracking-wide">
-                New Generation
-              </span>
-              <span className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-                Concrete LLC
-              </span>
+      <div className="relative mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+        <a href="#top" className="flex flex-shrink-0 items-center gap-3">
+          <img
+            src={logo.url}
+            alt="856 New Generation Concrete LLC"
+            className="h-10 w-10 object-contain"
+          />
+          <span className="hidden leading-tight sm:block">
+            <span className="block font-display text-lg font-bold uppercase tracking-wide">
+              New Generation
             </span>
-          </a>
+            <span className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+              Concrete LLC
+            </span>
+          </span>
+        </a>
 
-          <div className="hidden items-center gap-1 sm:flex">
-            {[
-              { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook },
-              { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram },
-              { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube },
-              { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon },
-            ].map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm p-2 text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
+        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 sm:flex">
+          {[
+            { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook, color: "#1877F2" },
+            { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
+            { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube, color: "#FF0000" },
+            { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
+          ].map(({ href, label, Icon, color }) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm p-2 transition-transform hover:scale-110"
+              style={{ color }}
+            >
+              <Icon className="h-5 w-5" />
+            </a>
+          ))}
         </div>
 
         <nav className="ml-auto hidden items-center gap-7 lg:flex">
