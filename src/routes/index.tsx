@@ -9,7 +9,7 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { Footer } from "@/components/site/Footer";
 
-const title = "856 New Generation Concrete LLC | South Jersey Concrete Contractor";
+const title = "856 NEW GENERATION CONCRETE LLC | South Jersey Concrete Contractor";
 const description =
   "Licensed & insured concrete contractor in South Jersey. Driveways, patios, stamped concrete, foundations & commercial paving. Free estimates — (856) 326-0465.";
 
