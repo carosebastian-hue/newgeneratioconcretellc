@@ -16,6 +16,13 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+const socials = [
+  { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook, color: "#1877F2" },
+  { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
+  { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube, color: "#FF0000" },
+  { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
+];
+
 const links: { id: string; key: TKey }[] = [
   { id: "services", key: "nav.services" },
   { id: "gallery", key: "nav.gallery" },
