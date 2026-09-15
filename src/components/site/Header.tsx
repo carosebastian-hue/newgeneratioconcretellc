@@ -68,7 +68,19 @@ export function Header() {
           ))}
         </div>
 
-        <div className="flex flex-shrink-0 items-center gap-2">
+        <div className="flex flex-shrink-0 items-center gap-2 lg:gap-4">
+          <nav className="hidden items-center gap-7 lg:flex">
+            {links.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                className="text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
+              >
+                {t(l.key)}
+              </a>
+            ))}
+          </nav>
+
           <div className="flex overflow-hidden rounded-sm border border-border">
             {(["en", "es"] as const).map((code) => (
               <button
