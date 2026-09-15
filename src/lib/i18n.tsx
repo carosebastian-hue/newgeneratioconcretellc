@@ -204,8 +204,8 @@ export const CONTACT = {
 };
 
 export const SOCIAL = {
-  facebook: "#",
+  facebook: "https://www.facebook.com/profile.php?id=61574906236067",
   instagram: "#",
   youtube: "#",
-  tiktok: "#",
+  tiktok: "https://www.tiktok.com/@new.generation.concrete",
 };
