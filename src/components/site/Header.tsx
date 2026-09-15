@@ -37,11 +37,11 @@ export function Header() {
             alt="856 New Generation Concrete LLC"
             className="h-10 w-10 object-contain"
           />
-          <span className="hidden leading-tight sm:block">
-            <span className="block font-display text-lg font-bold uppercase tracking-wide">
+          <span className="leading-tight">
+            <span className="block font-display text-base font-bold uppercase tracking-wide sm:text-lg">
               New Generation
             </span>
-            <span className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[11px]">
               Concrete LLC
             </span>
           </span>
