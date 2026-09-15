@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-surface-strong/95 backdrop-blur">
-      <div className="relative mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <a href="#top" className="flex flex-shrink-0 items-center gap-3">
           <img
             src={logo.url}
@@ -47,7 +47,7 @@ export function Header() {
           </span>
         </a>
 
-        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 sm:flex">
+        <div className="hidden flex-1 items-center justify-center gap-1 sm:flex">
           {[
             { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook, color: "#1877F2" },
             { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
@@ -68,19 +68,7 @@ export function Header() {
           ))}
         </div>
 
-        <nav className="ml-auto hidden items-center gap-7 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.id}
-              href={`#${l.id}`}
-              className="text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
-            >
-              {t(l.key)}
-            </a>
-          ))}
-        </nav>
-
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+        <div className="flex flex-shrink-0 items-center gap-2">
           <div className="flex overflow-hidden rounded-sm border border-border">
             {(["en", "es"] as const).map((code) => (
               <button
