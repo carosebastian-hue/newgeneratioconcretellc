@@ -16,6 +16,13 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+const socials = [
+  { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook, color: "#1877F2" },
+  { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
+  { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube, color: "#FF0000" },
+  { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
+];
+
 const links: { id: string; key: TKey }[] = [
   { id: "services", key: "nav.services" },
   { id: "gallery", key: "nav.gallery" },
@@ -37,23 +44,18 @@ export function Header() {
             alt="856 New Generation Concrete LLC"
             className="h-10 w-10 object-contain"
           />
-          <span className="hidden leading-tight sm:block">
-            <span className="block font-display text-lg font-bold uppercase tracking-wide">
+          <span className="leading-tight">
+            <span className="block font-display text-base font-bold uppercase tracking-wide sm:text-lg">
               New Generation
             </span>
-            <span className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+            <span className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[11px]">
               Concrete LLC
             </span>
           </span>
         </a>
 
         <div className="hidden flex-1 items-center justify-center gap-1 sm:flex">
-          {[
-            { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook, color: "#1877F2" },
-            { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
-            { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube, color: "#FF0000" },
-            { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
-          ].map(({ href, label, Icon, color }) => (
+          {socials.map(({ href, label, Icon, color }) => (
             <a
               key={label}
               href={href}
@@ -141,6 +143,21 @@ export function Header() {
           >
             {t("cta.quote")}
           </a>
+          <div className="mt-3 flex items-center justify-center gap-1 border-t border-border pt-3 sm:hidden">
+            {socials.map(({ href, label, Icon, color }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-sm p-2 transition-transform hover:scale-110"
+                style={{ color }}
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </nav>
       )}
     </header>
