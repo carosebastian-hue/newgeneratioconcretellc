@@ -143,6 +143,21 @@ export function Header() {
           >
             {t("cta.quote")}
           </a>
+          <div className="mt-3 flex items-center justify-center gap-1 border-t border-border pt-3 sm:hidden">
+            {socials.map(({ href, label, Icon, color }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-sm p-2 transition-transform hover:scale-110"
+                style={{ color }}
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </nav>
       )}
     </header>
