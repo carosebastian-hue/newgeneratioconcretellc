@@ -1,5 +1,6 @@
 import { Phone, ShieldCheck, BadgeCheck, Hammer, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
+import heroVideo from "@/assets/hero.mp4";
 import { CONTACT, useLang } from "@/lib/i18n";
 
 export function Hero() {
@@ -11,6 +12,17 @@ export function Hero() {
         src={heroImg}
         alt="Finished concrete project by 856 New Generation Concrete"
         className="absolute inset-0 h-full w-full object-cover"
+      />
+      <video
+        src={heroVideo}
+        poster={heroImg}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-surface-strong via-surface-strong/90 to-surface-strong/30" />
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-36">
