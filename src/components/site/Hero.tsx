@@ -1,6 +1,5 @@
 import { Phone, ShieldCheck, BadgeCheck, Hammer, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import heroVideo from "@/assets/presentacion.mp4.asset.json";
 import { CONTACT, useLang } from "@/lib/i18n";
 
 export function Hero() {
@@ -8,15 +7,9 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <video
-        src={heroVideo.url}
-        poster={heroImg}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label="Video of a concrete project by 856 New Generation Concrete"
+      <img
+        src={heroImg}
+        alt="Finished concrete project by 856 New Generation Concrete"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-surface-strong via-surface-strong/90 to-surface-strong/30" />

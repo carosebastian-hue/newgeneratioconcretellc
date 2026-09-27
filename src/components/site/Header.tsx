@@ -23,12 +23,13 @@ const socials = [
   { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
 ];
 
-const links: { id: string; key: TKey }[] = [
+const links: { id: string; key: TKey; page?: boolean }[] = [
   { id: "services", key: "nav.services" },
   { id: "gallery", key: "nav.gallery" },
   { id: "why", key: "nav.why" },
   { id: "reviews", key: "nav.reviews" },
   { id: "contact", key: "nav.contact" },
+  { id: "trabaja-con-nosotros", key: "nav.work", page: true },
 ];
 
 export function Header() {
@@ -38,7 +39,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-surface-strong/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="#top" className="flex flex-shrink-0 items-center gap-3">
+        <a href="/" className="flex flex-shrink-0 items-center gap-3">
           <img
             src={logo.url}
             alt="856 New Generation Concrete LLC"
@@ -75,7 +76,7 @@ export function Header() {
             {links.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={l.page ? `/${l.id}` : `/#${l.id}`}
                 className="text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
               >
                 {t(l.key)}
@@ -108,7 +109,7 @@ export function Header() {
             {t("cta.call")}
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden rounded-sm bg-primary px-4 py-2 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5 md:inline-block"
           >
             {t("cta.quote")}
@@ -129,7 +130,7 @@ export function Header() {
           {links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={l.page ? `/${l.id}` : `/#${l.id}`}
               onClick={() => setOpen(false)}
               className="block py-2 text-sm font-medium uppercase tracking-wide text-muted-foreground hover:text-primary"
             >
@@ -137,7 +138,7 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="mt-2 block rounded-sm bg-primary px-4 py-2 text-center text-sm font-bold uppercase text-primary-foreground"
           >
