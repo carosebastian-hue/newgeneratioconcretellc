@@ -119,8 +119,8 @@ const projects: Project[] = [
   {
     id: "p7",
     src: sidewalk,
-    w: 1024,
-    h: 1280,
+    w: 1280,
+    h: 853,
     cat: "commercial",
     title: { en: "Municipal Sidewalk & Curb", es: "Acera y bordillo municipal" },
     location: "Camden County, NJ",
