@@ -21,7 +21,7 @@ const socials = [
   { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram, color: "#E1306C" },
   { href: SOCIAL.youtube, label: "YouTube", Icon: Youtube, color: "#FF0000" },
   { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTokIcon, color: "#FFFFFF" },
-];
+].filter((s) => s.href && s.href !== "#");
 
 const links: { id: string; key: TKey; page?: boolean }[] = [
   { id: "services", key: "nav.services" },
