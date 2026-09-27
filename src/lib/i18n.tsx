@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 
 export type Lang = "en" | "es";
 
@@ -30,7 +22,7 @@ const en = {
     "Residential and commercial concrete done right the first time — driveways, patios, stamped finishes, foundations and paving across South Jersey.",
   "badge.licensed": "Licensed & Insured",
   "badge.free": "Free Estimates",
-  "badge.years": "10+ Years Experience",
+  "badge.years": "Over 10+ Years Experience",
   "services.title": "What We Pour",
   "services.sub": "Full-service concrete for homes and businesses.",
   "svc.res.t": "Residential Concrete",
@@ -203,33 +195,8 @@ const LangContext = createContext<{
   t: (k: TKey) => string;
 }>({ lang: "en", setLang: () => {}, t: (k) => en[k] });
 
-const LANG_KEY = "ngc-lang";
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
-
-  // Restore the visitor's language choice so it survives page navigation.
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(LANG_KEY);
-      if (saved === "en" || saved === "es") setLangState(saved);
-    } catch {
-      /* storage unavailable */
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
-
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try {
-      window.localStorage.setItem(LANG_KEY, l);
-    } catch {
-      /* storage unavailable */
-    }
-  }, []);
+  const [lang, setLang] = useState<Lang>("en");
   const value = useMemo(
     () => ({ lang, setLang, t: (k: TKey) => dict[lang][k] }),
     [lang],

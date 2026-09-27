@@ -55,7 +55,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {links.map((l) => (
               <li key={l.id}>
-                <a href={`/#${l.id}`} className="text-muted-foreground hover:text-primary">
+                <a href={`#${l.id}`} className="text-muted-foreground hover:text-primary">
                   {t(l.key)}
                 </a>
               </li>
