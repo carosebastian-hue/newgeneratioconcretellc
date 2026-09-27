@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Phone, Menu, X, Facebook, Instagram, Youtube } from "lucide-react";
 import { CONTACT, SOCIAL, useLang, type TKey } from "@/lib/i18n";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -41,7 +41,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <a href="/" className="flex flex-shrink-0 items-center gap-3">
           <img
-            src={logo.url}
+            src={logo}
             alt="856 New Generation Concrete LLC"
             className="h-10 w-10 object-contain"
           />
