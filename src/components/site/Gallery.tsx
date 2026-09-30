@@ -75,7 +75,7 @@ const projects: Project[] = [
     id: "p4",
     src: wall,
     w: 1280,
-    h: 1707,
+    h: 1827,
     cat: "walls",
     title: { en: "Retaining Wall & Poured Steps", es: "Muro de contención y escalones" },
     location: "Glassboro, NJ",
