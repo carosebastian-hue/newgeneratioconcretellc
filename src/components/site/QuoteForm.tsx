@@ -16,28 +16,68 @@ const timelineKeys: TKey[] = ["form.tl.asap", "form.tl.1m", "form.tl.3m", "form.
 const field =
   "w-full rounded-sm border border-input bg-surface-strong px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary";
 
+// Public Web3Forms access key (safe to expose; it only allows sending to the
+// email it was created for). Get one at https://web3forms.com.
+// While empty, the form falls back to opening the visitor's email app.
+const WEB3FORMS_KEY: string = "b797828a-c327-4b74-9e93-1b83a477d805";
+
+type Status = "idle" | "sending" | "sent" | "error";
+
 export function QuoteForm() {
   const { t } = useLang();
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const direct = WEB3FORMS_KEY !== "";
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    const body = [
-      `${t("form.name")}: ${f.get("name")}`,
-      `${t("form.phone")}: ${f.get("phone")}`,
-      `${t("form.email")}: ${f.get("email")}`,
-      `${t("form.service")}: ${f.get("service")}`,
-      `${t("form.timeline")}: ${f.get("timeline")}`,
-      "",
-      `${t("form.details")}:`,
-      String(f.get("details") ?? ""),
-    ].join("\n");
+    const form = e.currentTarget;
+    const f = new FormData(form);
+    const subject = `Estimate request — ${f.get("name")}`;
 
-    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-      `Estimate request — ${f.get("name")}`,
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    if (!direct) {
+      const body = [
+        `${t("form.name")}: ${f.get("name")}`,
+        `${t("form.phone")}: ${f.get("phone")}`,
+        `${t("form.email")}: ${f.get("email")}`,
+        `${t("form.service")}: ${f.get("service")}`,
+        `${t("form.timeline")}: ${f.get("timeline")}`,
+        "",
+        `${t("form.details")}:`,
+        String(f.get("details") ?? ""),
+      ].join("\n");
+      window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("sent");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject,
+          from_name: "New Generation Concrete website",
+          replyto: f.get("email"),
+          Name: f.get("name"),
+          Phone: f.get("phone"),
+          Email: f.get("email"),
+          Service: f.get("service"),
+          Timeline: f.get("timeline"),
+          Details: f.get("details"),
+          botcheck: f.get("botcheck") ?? "",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error("send failed");
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -65,7 +105,7 @@ export function QuoteForm() {
             </a>
           </div>
           <p className="mt-8 max-w-sm text-xs leading-relaxed text-muted-foreground">
-            {t("form.note")}
+            {t(direct ? "form.noteDirect" : "form.note")}
           </p>
         </div>
 
@@ -73,6 +113,14 @@ export function QuoteForm() {
           onSubmit={handleSubmit}
           className="grid gap-4 rounded-sm border border-border bg-card p-6 sm:grid-cols-2 sm:p-8"
         >
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+          />
           <label className="block text-sm">
             <span className="mb-2 block font-semibold uppercase tracking-wide text-muted-foreground">
               {t("form.name")}
@@ -129,14 +177,20 @@ export function QuoteForm() {
           </label>
           <button
             type="submit"
-            className="group inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5 sm:col-span-2"
+            disabled={status === "sending"}
+            className="group inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60 sm:col-span-2"
           >
-            {t("form.submit")}
+            {status === "sending" ? t("form.sending") : t("form.submit")}
             <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
-          {sent && (
-            <p className="text-xs text-primary sm:col-span-2" role="status">
-              {t("form.note")}
+          {status === "sent" && (
+            <p className="text-sm font-semibold text-primary sm:col-span-2" role="status">
+              {t(direct ? "form.success" : "form.note")}
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-sm font-semibold text-destructive sm:col-span-2" role="alert">
+              {t("form.error")}
             </p>
           )}
         </form>
