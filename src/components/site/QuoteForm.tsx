@@ -19,7 +19,7 @@ const field =
 // Public Web3Forms access key (safe to expose; it only allows sending to the
 // email it was created for). Get one at https://web3forms.com.
 // While empty, the form falls back to opening the visitor's email app.
-const WEB3FORMS_KEY: string = "b797828a-c327-4b74-9e93-1b83a477d805";
+const WEB3FORMS_KEY: string = "72677986-f55d-4b57-80e3-d7e07c1b361a";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
