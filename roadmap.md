@@ -1,0 +1,3 @@
+- [x] Trabaja con nosotros page
+- [ ] Hero generated video (blocked: credits)
+- [x] Replace email with 856newgenerationconcrete.llc@gmail.com

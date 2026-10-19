@@ -74,8 +74,8 @@ const projects: Project[] = [
   {
     id: "p4",
     src: wall,
-    w: 1280,
-    h: 830,
+    w: 1024,
+    h: 1280,
     cat: "walls",
     title: { en: "Retaining Wall & Poured Steps", es: "Muro de contención y escalones" },
     location: "Glassboro, NJ",
@@ -119,8 +119,8 @@ const projects: Project[] = [
   {
     id: "p7",
     src: sidewalk,
-    w: 1280,
-    h: 853,
+    w: 1024,
+    h: 1280,
     cat: "commercial",
     title: { en: "Municipal Sidewalk & Curb", es: "Acera y bordillo municipal" },
     location: "Camden County, NJ",
