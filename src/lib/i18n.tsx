@@ -81,7 +81,7 @@ const en = {
   "form.tl.3m": "1–3 months",
   "form.tl.plan": "Just planning",
   "form.submit": "Send Request",
-  "form.note": "Your request opens an email to 856newgenerationconcrete@gmail.com. Prefer to talk? Call (856) 326-0465.",
+  "form.note": "Your request opens an email to 856newgenerationconcrete.llc@gmail.com. Prefer to talk? Call (856) 326-0465.",
   "foot.about": "Premier residential and commercial concrete contractor serving South Jersey with durable, precise work.",
   "foot.contact": "Contact",
   "foot.area": "Service Area",
@@ -173,7 +173,7 @@ const es: Record<keyof typeof en, string> = {
   "form.tl.3m": "1 a 3 meses",
   "form.tl.plan": "Solo planeando",
   "form.submit": "Enviar solicitud",
-  "form.note": "Su solicitud abre un correo a 856newgenerationconcrete@gmail.com. ¿Prefiere hablar? Llame al (856) 326-0465.",
+  "form.note": "Su solicitud abre un correo a 856newgenerationconcrete.llc@gmail.com. ¿Prefiere hablar? Llame al (856) 326-0465.",
   "foot.about": "Contratista líder de concreto residencial y comercial en South Jersey, con trabajo duradero y preciso.",
   "foot.contact": "Contacto",
   "foot.area": "Área de servicio",
@@ -209,7 +209,7 @@ export const useLang = () => useContext(LangContext);
 export const CONTACT = {
   phoneDisplay: "(856) 326-0465",
   phoneHref: "tel:8563260465",
-  email: "856newgenerationconcrete@gmail.com",
+  email: "856newgenerationconcrete.llc@gmail.com",
   name: "856 NEW GENERATION CONCRETE LLC",
 };
 
