@@ -6,10 +6,17 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// `npm run build:static` sets STATIC_EXPORT=1 to pre-render every page to plain HTML
+// for shared hosting (cPanel). The normal `npm run build` (Cloudflare) is unchanged.
+const staticExport = process.env.STATIC_EXPORT === "1";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(staticExport
+      ? { prerender: { enabled: true, crawlLinks: true, autoSubfolderIndex: true } }
+      : {}),
   },
 });
