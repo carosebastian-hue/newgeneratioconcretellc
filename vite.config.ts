@@ -6,8 +6,9 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// `npm run build:static` sets STATIC_EXPORT=1 to pre-render every page to plain HTML
-// for shared hosting (cPanel). The normal `npm run build` (Cloudflare) is unchanged.
+// `npm run build:static` sets STATIC_EXPORT=1 to build a single-page app (SPA) shell
+// for shared hosting (cPanel): every route renders in the browser, so no route needs to
+// run on a server at build time. The normal `npm run build` (Cloudflare) is unchanged.
 const staticExport = process.env.STATIC_EXPORT === "1";
 
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     ...(staticExport
-      ? { prerender: { enabled: true, crawlLinks: true, autoSubfolderIndex: true } }
+      ? { spa: { enabled: true } }
       : {}),
   },
 });
