@@ -3,13 +3,17 @@
 import { spawnSync } from "node:child_process";
 import { copyFileSync, cpSync, existsSync, rmSync, writeFileSync } from "node:fs";
 
+// Start from a clean slate so no output from an earlier build is reused.
+for (const dir of ["dist", ".output"]) rmSync(dir, { recursive: true, force: true });
+
 const OUT = "sitio-estatico";
-const env = { ...process.env, STATIC_EXPORT: "1", NITRO_PRESET: "node-server" };
+const env = { ...process.env, STATIC_EXPORT: "1" };
 
 const result = spawnSync("npx", ["vite", "build"], { stdio: "inherit", env, shell: true });
 if (result.status !== 0) process.exit(result.status ?? 1);
 
-const built = ".output/public";
+// Client output: dist/client without nitro (.output/public kept as a fallback).
+const built = ["dist/client", ".output/public"].find((d) => existsSync(d)) ?? "dist/client";
 const shell = ["_shell.html", "_shell/index.html", "index.html"]
   .map((f) => `${built}/${f}`)
   .find((f) => existsSync(f));

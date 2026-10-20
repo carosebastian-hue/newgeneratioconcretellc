@@ -6,18 +6,23 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// `npm run build:static` sets STATIC_EXPORT=1 to build a single-page app (SPA) shell
-// for shared hosting (cPanel): every route renders in the browser, so no route needs to
-// run on a server at build time. The normal `npm run build` (Cloudflare) is unchanged.
+// `npm run build:static` sets STATIC_EXPORT=1 to build a single-page app (SPA) for shared
+// hosting (cPanel): plain TanStack Start build (no nitro, default server entry) whose only
+// pre-rendered file is the app shell; every route renders in the browser.
+// The normal `npm run build` (Cloudflare) is unchanged.
 const staticExport = process.env.STATIC_EXPORT === "1";
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-    ...(staticExport
-      ? { spa: { enabled: true } }
-      : {}),
-  },
-});
+export default defineConfig(
+  staticExport
+    ? {
+        nitro: false,
+        tanstackStart: { spa: { enabled: true } },
+      }
+    : {
+        tanstackStart: {
+          // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
+          // nitro/vite builds from this
+          server: { entry: "server" },
+        },
+      },
+);
